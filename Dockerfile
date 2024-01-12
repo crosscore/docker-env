@@ -3,6 +3,10 @@
 # Specify base image
 FROM python:3.11.6
 
+# Set time zone
+ENV TZ=Asia/Tokyo
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 # Set working directory
 WORKDIR /usr/src/repos
 
