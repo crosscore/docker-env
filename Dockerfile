@@ -7,6 +7,10 @@ FROM python:3.11.6
 ENV TZ=Asia/Tokyo
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
+# Set HISTSIZE and HISTFILESIZE
+RUN echo "export HISTSIZE=10000" >> /root/.bashrc \
+ && echo "export HISTFILESIZE=10000" >> /root/.bashrc
+
 # Set working directory
 WORKDIR /usr/src/repos
 
