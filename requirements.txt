@@ -16,7 +16,9 @@ japanize-matplotlib
 pymongo
 nlplot
 sympy
+sentencepiece
+accelerate
+tensorboard
 
 # spacy
 # mecab-python3
-# sentencepiece
