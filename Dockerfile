@@ -35,8 +35,11 @@ COPY entrypoint.sh /usr/local/bin/
 # Make the entrypoint script executable
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
+# Expose the port the app runs on
+EXPOSE 5000
+
 # Set the entrypoint script
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
-# Default command
+# Default command to open a bash shell
 CMD ["/bin/bash"]

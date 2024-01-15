@@ -19,6 +19,13 @@ sympy
 sentencepiece
 accelerate
 tensorboard
+flask
+Flask-SQLAlchemy
+Flask-WTF
+Flask-Migrate
+Flask-Login
+pytest
+Flask-DebugToolbar
 
 # spacy
 # mecab-python3
