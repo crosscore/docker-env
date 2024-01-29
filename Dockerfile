@@ -10,7 +10,9 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 # Set working directory
 WORKDIR /usr/src/repos
 
-RUN apt-get update && apt-get install -y git
+RUN apt-get update && apt-get install -y \
+    build-essential zlib1g-dev libncurses5-dev libgdbm-dev \
+    libnss3-dev libssl-dev libreadline-dev libffi-dev wget
 
 # Install Japanese fonts
 RUN apt-get install -y fonts-noto-cjk
@@ -26,6 +28,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 RUN apt-get install -y curl \
     && curl -SL https://deb.nodesource.com/setup_current.x | bash - \
     && apt-get install -y nodejs
+
+RUN npm install -g typescript
 
 # Install zsh and make it the default shell
 RUN apt-get install -y zsh && chsh -s $(which zsh)
