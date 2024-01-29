@@ -1,7 +1,7 @@
 # Dockerfile
 
 # Specify base image
-FROM python:3.11.6
+FROM python:3.10.13-slim-bookworm
 
 # Set time zone
 ENV TZ=Asia/Tokyo
@@ -21,6 +21,11 @@ RUN pip install --upgrade pip
 # Install required Python packages
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
+
+# Install Node.js
+RUN apt-get install -y curl \
+    && curl -SL https://deb.nodesource.com/setup_current.x | bash - \
+    && apt-get install -y nodejs
 
 # Install zsh and make it the default shell
 RUN apt-get install -y zsh && chsh -s $(which zsh)
