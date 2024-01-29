@@ -7,10 +7,6 @@ FROM python:3.11.6
 ENV TZ=Asia/Tokyo
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-# Set HISTSIZE and HISTFILESIZE
-RUN echo "export HISTSIZE=10000" >> /root/.bashrc \
- && echo "export HISTFILESIZE=10000" >> /root/.bashrc
-
 # Set working directory
 WORKDIR /usr/src/repos
 
@@ -25,6 +21,9 @@ RUN pip install --upgrade pip
 # Install required Python packages
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
+
+# Install zsh and make it the default shell
+RUN apt-get install -y zsh && chsh -s $(which zsh)
 
 # Copy the application code to the container
 COPY . .
