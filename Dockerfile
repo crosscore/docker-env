@@ -1,14 +1,14 @@
 # Dockerfile
 
 # Specify base image
-FROM python:3.10.12
+FROM python:3.10.12-slim
 
 # Set time zone
 ENV TZ=Asia/Tokyo
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # Set working directory
-WORKDIR /usr/src/repos
+WORKDIR /root/repos
 
 RUN apt-get update && apt-get install -y \
     build-essential zlib1g-dev libncurses5-dev libgdbm-dev \
@@ -30,9 +30,9 @@ RUN apt-get install -y curl \
     && apt-get install -y nodejs
 
 # Install project dependencies
-COPY package.json ./
-COPY package-lock.json ./
-RUN npm ci
+# COPY package.json ./
+# COPY package-lock.json ./
+# RUN npm ci
 
 # Install zsh and make it the default shell
 RUN apt-get install -y zsh && chsh -s $(which zsh)
@@ -55,4 +55,4 @@ EXPOSE 8080-8089
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
 # Default command to open a bash shell
-CMD ["/bin/bash"]
+CMD ["/usr/bin/zsh"]

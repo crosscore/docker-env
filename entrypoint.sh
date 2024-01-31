@@ -1,7 +1,7 @@
 #!/bin/bash
 
-git config --global user.email ""
-git config --global user.name ""
+git config --global user.email "yuu"
+git config --global user.name "crosscore.g@gmail.com"
 git config --global core.autocrlf input
 
 # Set SSH key permissions
@@ -17,5 +17,5 @@ ls -l /root/.ssh/id_rsa.pub
 export FLASK_APP=app.py
 export FLASK_ENV=development
 
-# Run the container's main process (/bin/bash in this example)
-exec "$@"
+# Run the container's main process (zsh in this case)
+exec "/usr/bin/zsh"
