@@ -1,7 +1,7 @@
 #!/bin/bash
 
-git config --global user.email "yuu"
-git config --global user.name "crosscore.g@gmail.com"
+git config --global user.email ""
+git config --global user.name ""
 git config --global core.autocrlf input
 
 # Set SSH key permissions
