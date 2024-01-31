@@ -1,7 +1,7 @@
 # Dockerfile
 
 # Specify base image
-FROM python:3.10.12-slim
+FROM python:3.10.12
 
 # Set time zone
 ENV TZ=Asia/Tokyo
