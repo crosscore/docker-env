@@ -18,4 +18,4 @@ export FLASK_APP=app.py
 export FLASK_ENV=development
 
 # Run the container's main process (zsh in this case)
-exec "/usr/bin/zsh"
+exec "/usr/bin/zsh" -c "source /root/.zshrc; exec /usr/bin/zsh"
