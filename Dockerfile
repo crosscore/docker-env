@@ -29,6 +29,9 @@ RUN apt-get install -y curl \
     && curl -SL https://deb.nodesource.com/setup_current.x | bash - \
     && apt-get install -y nodejs
 
+# Install TypeScript
+RUN npm install -g typescript
+
 # Install project dependencies
 # COPY package.json ./
 # COPY package-lock.json ./
