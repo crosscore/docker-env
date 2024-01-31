@@ -12,7 +12,7 @@ WORKDIR /root/repos
 
 RUN apt-get update && apt-get install -y \
     build-essential zlib1g-dev libncurses5-dev libgdbm-dev \
-    libnss3-dev libssl-dev libreadline-dev libffi-dev wget
+    libnss3-dev libssl-dev libreadline-dev libffi-dev wget lsof
 
 # Install Japanese fonts
 RUN apt-get install -y fonts-noto-cjk
