@@ -2,7 +2,7 @@
 
 git config --global user.email ""
 git config --global user.name ""
-git config --global log.date local
+git config --global core.autocrlf input
 
 # Set SSH key permissions
 chmod 600 /root/.ssh/id_rsa

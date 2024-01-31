@@ -1,7 +1,7 @@
 # Dockerfile
 
 # Specify base image
-FROM python:3.10.13-slim-bookworm
+FROM python:3.10.12
 
 # Set time zone
 ENV TZ=Asia/Tokyo
@@ -29,7 +29,10 @@ RUN apt-get install -y curl \
     && curl -SL https://deb.nodesource.com/setup_current.x | bash - \
     && apt-get install -y nodejs
 
-RUN npm install -g typescript
+# Install project dependencies
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm ci
 
 # Install zsh and make it the default shell
 RUN apt-get install -y zsh && chsh -s $(which zsh)
@@ -44,7 +47,9 @@ COPY entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Expose the port the app runs on
-EXPOSE 5000
+EXPOSE 3000-3009
+EXPOSE 5000-5009
+EXPOSE 8080-8089
 
 # Set the entrypoint script
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
