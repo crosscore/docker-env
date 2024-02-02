@@ -16,5 +16,5 @@ ls -l /root/.ssh/id_rsa.pub
 export FLASK_APP=app.py
 export FLASK_ENV=development
 
-# Run the container's main process (zsh in this case)
-exec "/usr/bin/zsh" -c "source /root/.zshrc"
+# Run the container's main process (whatever is passed as CMD)
+exec "$@"
