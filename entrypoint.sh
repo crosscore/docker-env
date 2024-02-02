@@ -1,5 +1,4 @@
 #!/bin/bash
-
 git config --global user.email "yuu"
 git config --global user.name "crosscore.g@gmail.com"
 git config --global core.autocrlf input
@@ -18,4 +17,4 @@ export FLASK_APP=app.py
 export FLASK_ENV=development
 
 # Run the container's main process (zsh in this case)
-exec "/usr/bin/zsh" -c "source /root/.zshrc; exec /usr/bin/zsh"
+exec "/usr/bin/zsh" -c "source /root/.zshrc"

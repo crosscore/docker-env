@@ -1,0 +1,17 @@
+# docker-compose.yml
+
+version: '3'
+services:
+  my-python-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: my-python:3.10.12
+    volumes:
+      - /home/yuu/repos:/root/repos
+      - /home/yuu/.zshrc:/root/.zshrc
+      - /home/yuu/.ssh:/root/.ssh
+    ports:
+      - "8888:8888"
+    environment:
+      - TZ=Asia/Tokyo
