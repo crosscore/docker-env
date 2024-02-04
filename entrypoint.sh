@@ -2,6 +2,7 @@
 git config --global user.email "yuu"
 git config --global user.name "crosscore.g@gmail.com"
 git config --global core.autocrlf input
+git config --global init.defaultBranch main
 
 # Set SSH key permissions
 chmod 600 /root/.ssh/id_rsa
