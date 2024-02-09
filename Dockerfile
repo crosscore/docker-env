@@ -1,17 +1,14 @@
-# Dockerfile
-
 # Specify base image
 FROM python:3.10.12
 
 # Set working directory
 WORKDIR /root/repos
 
+# Install dependencies
 RUN apt-get update && apt-get install -y \
-    build-essential zlib1g-dev libncurses5-dev libgdbm-dev \
-    libnss3-dev libssl-dev libreadline-dev libffi-dev wget lsof
-
-# Install Japanese fonts
-RUN apt-get install -y fonts-noto-cjk
+  build-essential zlib1g-dev libncurses5-dev libgdbm-dev \
+  libnss3-dev libssl-dev libreadline-dev libffi-dev wget lsof \
+  curl fonts-noto-cjk
 
 # Upgrade pip
 RUN pip install --upgrade pip
@@ -20,10 +17,12 @@ RUN pip install --upgrade pip
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Install Node.js
-RUN apt-get install -y curl \
-    && curl -SL https://deb.nodesource.com/setup_current.x | bash - \
-    && apt-get install -y nodejs
+# Install 'n' for Node.js version management and Node.js
+RUN curl -L https://git.io/n-install | bash -s -- -y && \
+  /root/n/bin/n stable
+
+# Add /root/n/bin to PATH
+ENV PATH="/root/n/bin:${PATH}"
 
 # Install TypeScript
 RUN npm install -g typescript
